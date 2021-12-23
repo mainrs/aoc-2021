@@ -5,11 +5,16 @@ import java.util.Objects;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.BiFunction;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class Streams {
 	private Streams() {
+	}
+
+	public static IntStream infinite(int value) {
+		return IntStream.generate(() -> value);
 	}
 
 	public static <A, B, C> Stream<C> zip(Stream<? extends A> a,
