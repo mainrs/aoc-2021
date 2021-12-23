@@ -54,7 +54,8 @@ public class Day5 extends AbstractProblem {
 		}
 
 		private static IntStream constructStream(int from, int to) {
-			if (from + 1 == to) {
+			if (from == to) {
+				System.out.println("infinite");
 				return IntStream.generate(() -> from);
 			}
 
@@ -66,8 +67,8 @@ public class Day5 extends AbstractProblem {
 		}
 
 		private static List<Point> constructLinePoints(Point from, Point to) {
-			IntStream xValues = constructStream(from.x, to.x + 1);
-			IntStream yValues = constructStream(from.y, to.y + 1);
+			IntStream xValues = constructStream(from.x, to.x);
+			IntStream yValues = constructStream(from.y, to.y);
 
 			return Streams.zip(xValues.boxed(), yValues.boxed(), (x, y) -> new Point(x, y)).toList();
 		}
